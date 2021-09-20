@@ -20,7 +20,11 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String token;
 
-    private final CommandContainer commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));;
+    private final CommandContainer commandContainer;
+
+    public JavaTelegramBot() {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
