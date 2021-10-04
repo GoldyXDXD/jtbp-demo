@@ -5,16 +5,14 @@ import org.teamnescafe.jtbpdemo.service.SendBotMessageService;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-public class StatCommand implements Command {
-
+public class HomeworkCommand implements Command {
     private final TelegramUserService telegramUserService;
     private final SendBotMessageService sendBotMessageService;
 
-    public final static String STAT_MESSAGE_FOR_ONE_MAN = "Данный бот обслуживает 1 человека.";
-    public final static String STAT_MESSAGE = "Данный бот обслуживает %s человек.";
+    public final static String NO_HOMEWORK_MESSAGE = "Домашки нет.";
 
     @Autowired
-    public StatCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
+    public HomeworkCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
     }
