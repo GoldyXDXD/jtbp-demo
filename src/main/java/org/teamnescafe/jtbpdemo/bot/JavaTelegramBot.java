@@ -3,6 +3,7 @@ package org.teamnescafe.jtbpdemo.bot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.teamnescafe.jtbpdemo.command.CommandContainer;
+import org.teamnescafe.jtbpdemo.service.HomeworkService;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageServiceImpl;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -23,8 +24,8 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public JavaTelegramBot(TelegramUserService telegramUserService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
+    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService);
     }
 
     @Override

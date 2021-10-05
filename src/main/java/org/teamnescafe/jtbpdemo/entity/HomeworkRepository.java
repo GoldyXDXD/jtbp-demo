@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HomeworkRepository extends JpaRepository<Homework, String> {
+public interface HomeworkRepository extends JpaRepository<Homework, Integer> {
     List<Homework> findAllByActiveTrue();
 
     List<Homework> findAllByDescriptionIsNotNull();

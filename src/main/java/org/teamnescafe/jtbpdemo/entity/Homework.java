@@ -12,11 +12,16 @@ import javax.persistence.Table;
 public class Homework {
     @Id
     @Column(name = "Id")
-    private String id;
+    private int id;
 
     @Column(name = "homework_description")
     private String description;
 
     @Column(name = "active")
     private boolean active;
+
+    @Override
+    public String toString() {
+        return String.format("%d. %s. Актуальность: %b", id, description, active);
+    }
 }

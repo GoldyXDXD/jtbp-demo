@@ -24,7 +24,8 @@ public class StatCommand implements Command {
         int activeUserCount = telegramUserService.retrieveAllActiveUsers().size();
         if (activeUserCount == 1) {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STAT_MESSAGE_FOR_ONE_MAN);
+        } else {
+            sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), String.format(STAT_MESSAGE, activeUserCount));
         }
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), String.format(STAT_MESSAGE, activeUserCount));
     }
 }

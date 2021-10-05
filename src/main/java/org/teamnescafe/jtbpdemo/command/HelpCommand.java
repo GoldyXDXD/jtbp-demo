@@ -13,9 +13,11 @@ public class HelpCommand implements Command {
 
                     + "<b>Начать\\закончить работу с ботом</b>\n"
                     + "%s - начать работу со мной\n"
-                    + "%s - уйти прочь\n\n"
-                    + "%s - для тех, уто играет БЕЗ ПОМАЩИ\n",
-            START.getCommandName(), STOP.getCommandName(), HELP.getCommandName());
+                    + "%s - уйти прочь (пригодится в дальнейшем для отключения уведомлений)\n"
+                    + "%s - посмотреть архив домашних заданий\n"
+                    + "%s - посмотреть актуальное домашнее задание\n\n"
+                    + "%s - для тех, кому не хватает ПОМАЩИ\n",
+            START.getCommandName(), STOP.getCommandName(),HOMEWORK_HISTORY.getCommandName(), ACTIVE_HOMEWORK.getCommandName() ,HELP.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
