@@ -7,7 +7,8 @@ public enum CommandName {
     NO(""),
     STAT("/stat"),
     ACTIVE_HOMEWORK("/active_homework"),
-    HOMEWORK_HISTORY("/homework_history");
+    HOMEWORK_HISTORY("/homework_history"),
+    STUDENT_LIST("/student_list");
 
     private final String commandName;
 

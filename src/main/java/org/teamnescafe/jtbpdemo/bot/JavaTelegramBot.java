@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.teamnescafe.jtbpdemo.command.CommandContainer;
 import org.teamnescafe.jtbpdemo.service.HomeworkService;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageServiceImpl;
+import org.teamnescafe.jtbpdemo.service.StudentService;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -24,8 +25,8 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService);
+    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService);
     }
 
     @Override
@@ -34,7 +35,6 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
             String message = update.getMessage().getText().trim();
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
-
                 commandContainer.retrieveCommand(commandIdentifier).execute(update);
             } else {
                 commandContainer.retrieveCommand(NO.getCommandName()).execute(update);

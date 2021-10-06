@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.checkerframework.checker.units.qual.A;
 import org.teamnescafe.jtbpdemo.service.HomeworkService;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageService;
+import org.teamnescafe.jtbpdemo.service.StudentService;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 
 import static org.teamnescafe.jtbpdemo.command.CommandName.*;
@@ -12,7 +13,7 @@ public class CommandContainer {
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownCommand;
 
-    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService, HomeworkService homeworkService) {
+    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService) {
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService, telegramUserService))
@@ -22,6 +23,7 @@ public class CommandContainer {
                 .put(STAT.getCommandName(), new StatCommand(sendBotMessageService, telegramUserService))
                 .put(ACTIVE_HOMEWORK.getCommandName(), new ActiveHomeworkCommand(sendBotMessageService, homeworkService))
                 .put(HOMEWORK_HISTORY.getCommandName(), new AllHomeworkCommand(sendBotMessageService, homeworkService))
+                .put(STUDENT_LIST.getCommandName(), new StudentListCommand(sendBotMessageService, studentService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);

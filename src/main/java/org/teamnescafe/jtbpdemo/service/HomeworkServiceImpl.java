@@ -3,7 +3,7 @@ package org.teamnescafe.jtbpdemo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.teamnescafe.jtbpdemo.entity.Homework;
-import org.teamnescafe.jtbpdemo.entity.HomeworkRepository;
+import org.teamnescafe.jtbpdemo.repo.HomeworkRepository;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class HomeworkServiceImpl implements HomeworkService {
 
     @Override
     public void save(Homework homework) {
-
+        homeworkRepository.save(homework);
     }
 
     @Override

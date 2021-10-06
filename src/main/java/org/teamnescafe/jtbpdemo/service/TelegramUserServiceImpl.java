@@ -3,7 +3,7 @@ package org.teamnescafe.jtbpdemo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.teamnescafe.jtbpdemo.entity.TelegramUser;
-import org.teamnescafe.jtbpdemo.entity.TelegramUserRepository;
+import org.teamnescafe.jtbpdemo.repo.TelegramUserRepository;
 
 import java.util.List;
 import java.util.Optional;

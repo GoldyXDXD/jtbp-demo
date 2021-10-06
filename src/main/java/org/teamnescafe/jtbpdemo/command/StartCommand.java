@@ -11,6 +11,7 @@ public class StartCommand implements Command {
     private final TelegramUserService telegramUserService;
 
     public final static String START_MESSAGE = "Дарова, дебич.";
+    public final static String HELP_MESSAGE = "Жмакай сюда, чтоб хоть что-нибудь понять\n/help";
 
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -34,5 +35,6 @@ public class StartCommand implements Command {
                 });
 
         sendBotMessageService.sendMessage(chatId, START_MESSAGE);
+        sendBotMessageService.sendMessage(chatId, HELP_MESSAGE);
     }
 }
