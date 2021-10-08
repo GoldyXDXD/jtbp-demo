@@ -1,5 +1,6 @@
 package org.teamnescafe.jtbpdemo.bot;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.teamnescafe.jtbpdemo.command.CommandContainer;
@@ -29,6 +30,7 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService);
     }
 
+    @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {

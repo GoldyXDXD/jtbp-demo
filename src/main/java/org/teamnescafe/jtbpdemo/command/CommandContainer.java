@@ -24,6 +24,7 @@ public class CommandContainer {
                 .put(ACTIVE_HOMEWORK.getCommandName(), new ActiveHomeworkCommand(sendBotMessageService, homeworkService))
                 .put(HOMEWORK_HISTORY.getCommandName(), new AllHomeworkCommand(sendBotMessageService, homeworkService))
                 .put(STUDENT_LIST.getCommandName(), new StudentListCommand(sendBotMessageService, studentService))
+                .put(TIMETABLE.getCommandName(), new GroupTimetableCommand(sendBotMessageService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
