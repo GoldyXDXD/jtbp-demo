@@ -7,7 +7,7 @@ public class NoCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String NO_MESSAGE = "Чел, пользуйся командами";
+    public static final String NO_MESSAGE = "Чел, пользуйся командами или нормально вводи дату. Клоун.";
 
     public NoCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
