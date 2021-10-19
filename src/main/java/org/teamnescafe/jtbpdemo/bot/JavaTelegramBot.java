@@ -4,10 +4,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.teamnescafe.jtbpdemo.command.CommandContainer;
-import org.teamnescafe.jtbpdemo.service.HomeworkService;
-import org.teamnescafe.jtbpdemo.service.SendBotMessageServiceImpl;
-import org.teamnescafe.jtbpdemo.service.StudentService;
-import org.teamnescafe.jtbpdemo.service.TelegramUserService;
+import org.teamnescafe.jtbpdemo.service.*;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -31,8 +28,8 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService);
+    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService, SubjectService subjectService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService, subjectService);
     }
 
     @SneakyThrows
@@ -40,13 +37,12 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
-            Pattern pattern = Pattern.compile("[0-9][0-9][.][0-9][0-9][.][0-9][0-9][0-9][0-9]");
+            Pattern pattern = Pattern.compile("[0-9][0-9][0-9][0-9][-][0-9][0-9][-][0-9][0-9]");
             Matcher matcher = pattern.matcher(message);
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 commandContainer.retrieveCommand(commandIdentifier).execute(update);
             } else if (matcher.matches()) {
-                TimeZone.setDefault(TimeZone.getTimeZone("Europe/Moscow"));
                 commandContainer.retrieveCommand(TIMETABLE.getCommandName()).execute(update);
             }
             else {

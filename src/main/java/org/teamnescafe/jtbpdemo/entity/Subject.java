@@ -32,4 +32,13 @@ public class Subject {
 
     @Column(name = "end")
     private Time end;
+
+    @Override
+    public String toString() {
+        if (getTeacher() == null || getTeacher().equals("")) {
+            return String.format("%s. %s - %s\n", description, beginning.toString(), end.toString());
+        } else {
+            return String.format("%s. %s - %s\nПреподаватель: %s\n", description, beginning.toString(), end.toString(), teacher);
+        }
+    }
 }

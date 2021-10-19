@@ -17,7 +17,7 @@ public class HelpCommand implements Command {
                     + "%s - посмотреть архив домашних заданий\n"
                     + "%s - посмотреть актуальное домашнее задание\n"
                     + "%s - посмотреть список группы\n\n"
-                    + "Для просмотра расписания введите дату нужного вам дня в формате xx.xx.xxxx (да, костыль, ну а кому нынче легко)\n\n"
+                    + "Для просмотра расписания введите дату нужного вам дня в формате xxxx-xx-xx (да, без команды, да, костыль, ну а кому нынче легко)\n\n"
                     + "%s - для тех, кому не хватает ПОМАЩИ\n",
             START.getCommandName(), STOP.getCommandName(),HOMEWORK_HISTORY.getCommandName(), ACTIVE_HOMEWORK.getCommandName(), STUDENT_LIST.getCommandName() ,HELP.getCommandName());
 
