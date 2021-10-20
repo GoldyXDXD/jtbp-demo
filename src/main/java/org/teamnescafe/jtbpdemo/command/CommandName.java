@@ -8,6 +8,7 @@ public enum CommandName {
     STAT("/stat"),
     ACTIVE_HOMEWORK("/active_homework"),
     HOMEWORK_HISTORY("/homework_history"),
+    GROUP_TIMETABLE("/dgjadgjaokjgsdlkgdflkghdhkglkdfshgkdhghksldfkfhglkhdlkghdlkhghoipewrhgopierhgoiperhopiekhneokjoerigoierjgoierhgi"),
     TIMETABLE("/timetable"),
     STUDENT_LIST("/student_list");
 

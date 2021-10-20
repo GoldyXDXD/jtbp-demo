@@ -24,7 +24,7 @@ class GroupTimetableCommand implements Command {
     public void execute(Update update) throws IOException, ParserException {
         String subjectList = subjectService
                 .retrieveAllByDate(update.getMessage().getText().trim()).stream().map(String::valueOf).collect(Collectors.joining("\n"));
-        if (subjectList.equals(null) || subjectList.isEmpty()) {
+        if (subjectList.isEmpty()) {
             subjectList = "Ничего не найдено.";
         }
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), subjectList);
