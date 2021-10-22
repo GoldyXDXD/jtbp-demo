@@ -1,10 +1,12 @@
 package org.teamnescafe.jtbpdemo.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.teamnescafe.jtbpdemo.admin.AdminCommand;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageService;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+@AdminCommand
 public class StatCommand implements Command {
 
     private final TelegramUserService telegramUserService;
