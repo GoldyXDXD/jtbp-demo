@@ -43,15 +43,16 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
             Matcher matcher = DATE_PATTERN.matcher(message);
+            String username = update.getMessage().getFrom().getUserName();
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 commandMessage = message;
-                commandContainer.retrieveCommand(commandIdentifier).execute(update);
+                commandContainer.retrieveCommand(commandIdentifier, username).execute(update);
             } else if (matcher.matches() && commandMessage.equals("/timetable")) {
-                commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName(), username).execute(update);
             }
             else {
-                commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName(), username).execute(update);
             }
         }
     }

@@ -9,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @AdminCommand
 public class StatCommand implements Command {
 
+    private boolean isAdminCommand = true;
     private final TelegramUserService telegramUserService;
     private final SendBotMessageService sendBotMessageService;
 
@@ -29,5 +30,10 @@ public class StatCommand implements Command {
         } else {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), String.format(STAT_MESSAGE, activeUserCount));
         }
+    }
+
+    @Override
+    public boolean isAdminCommand() {
+        return true;
     }
 }

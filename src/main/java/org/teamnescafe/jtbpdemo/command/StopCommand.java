@@ -26,4 +26,9 @@ public class StopCommand implements Command {
                     telegramUserService.save(it);
                 });
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

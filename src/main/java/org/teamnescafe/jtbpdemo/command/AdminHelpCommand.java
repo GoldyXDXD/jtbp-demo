@@ -7,6 +7,7 @@ import static java.lang.String.format;
 import static org.teamnescafe.jtbpdemo.command.CommandName.STAT;
 
 public class AdminHelpCommand implements Command {
+    private final boolean isAdminCommand = true;
 
     public static final String ADMIN_HELP_MESSAGE = format("✨<b>Доступные команды админа</b>✨\n\n"
                     + "<b>Получить статистику</b>\n"
@@ -22,5 +23,10 @@ public class AdminHelpCommand implements Command {
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), ADMIN_HELP_MESSAGE);
+    }
+
+    @Override
+    public boolean isAdminCommand() {
+        return true;
     }
 }

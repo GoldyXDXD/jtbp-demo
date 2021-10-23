@@ -17,4 +17,9 @@ public class NoCommand implements Command {
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), NO_MESSAGE);
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

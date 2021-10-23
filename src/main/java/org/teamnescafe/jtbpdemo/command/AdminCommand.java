@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class AdminCommand implements Command{
     public static final String ADMIN_MESSAGE = "Введи нужное действие";
 
+    private final boolean isAdminCommand = true;
     private final SendBotMessageService sendBotMessageService;
 
     public AdminCommand(SendBotMessageService sendBotMessageService) {
@@ -15,5 +16,10 @@ public class AdminCommand implements Command{
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), ADMIN_MESSAGE);
+    }
+
+    @Override
+    public boolean isAdminCommand() {
+        return true;
     }
 }

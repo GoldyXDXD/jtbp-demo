@@ -37,4 +37,9 @@ public class StartCommand implements Command {
         sendBotMessageService.sendMessage(chatId, START_MESSAGE);
         sendBotMessageService.sendMessage(chatId, HELP_MESSAGE);
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

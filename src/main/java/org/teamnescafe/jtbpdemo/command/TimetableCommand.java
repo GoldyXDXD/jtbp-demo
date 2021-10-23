@@ -16,4 +16,9 @@ public class TimetableCommand implements Command{
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), TIMETABLE_MESSAGE);
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

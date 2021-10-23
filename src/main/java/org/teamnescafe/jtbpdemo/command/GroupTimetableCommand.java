@@ -29,6 +29,11 @@ class GroupTimetableCommand implements Command {
         }
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), subjectList);
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }
 
 

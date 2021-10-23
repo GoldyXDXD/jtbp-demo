@@ -31,4 +31,9 @@ public class StudentListCommand implements Command{
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), studentList);
         }
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

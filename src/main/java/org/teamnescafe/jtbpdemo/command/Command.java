@@ -7,4 +7,5 @@ import java.io.IOException;
 
 public interface Command {
     void execute(Update update) throws IOException, ParserException;
+    boolean isAdminCommand();
 }

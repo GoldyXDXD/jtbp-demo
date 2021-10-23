@@ -29,4 +29,9 @@ public class ActiveHomeworkCommand implements Command {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), homeworkString);
         }
     }
+
+    @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
 }

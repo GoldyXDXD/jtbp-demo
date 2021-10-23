@@ -32,20 +32,22 @@ public class CommandContainer {
         unknownCommand = new UnknownCommand(sendBotMessageService);
     }
 
-    public Command retrieveCommand(String commandIdentifier) {
+    public Command retrieveCommand(String commandIdentifier, String username) {
         Command orDefault = commandMap.getOrDefault(commandIdentifier, unknownCommand);
-        if (isAdminCommand(orDefault)) {
+        if (isAdmin(orDefault)) {
             if (admins.contains(username)) {
                 return orDefault;
             } else {
                 return unknownCommand;
             }
         }
-        return commandMap.getOrDefault(commandIdentifier, unknownCommand);
+        return orDefault;
     }
 
-    private boolean isAdminCommand(Command command) {
-        return nonNull(command.getClass().getAnnotation(AdminCommand.class));
+    private boolean isAdmin(Command command) {
+        if (command.isAdminCommand()) {
+            return true;
+        }
+        return false;
     }
-
 }
