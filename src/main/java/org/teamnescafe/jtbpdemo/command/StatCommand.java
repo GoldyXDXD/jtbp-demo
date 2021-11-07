@@ -1,12 +1,11 @@
 package org.teamnescafe.jtbpdemo.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.teamnescafe.jtbpdemo.admin.AdminCommand;
+import org.teamnescafe.jtbpdemo.entity.TelegramUser;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageService;
 import org.teamnescafe.jtbpdemo.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-@AdminCommand
 public class StatCommand implements Command {
 
     private boolean isAdminCommand = true;
@@ -29,6 +28,9 @@ public class StatCommand implements Command {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STAT_MESSAGE_FOR_ONE_MAN);
         } else {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), String.format(STAT_MESSAGE, activeUserCount));
+            for (TelegramUser user: telegramUserService.retrieveAllUsers()) {
+                sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), user.getChatId());
+            }
         }
     }
 
