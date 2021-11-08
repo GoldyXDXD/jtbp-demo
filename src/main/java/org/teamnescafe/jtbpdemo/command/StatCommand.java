@@ -14,6 +14,7 @@ public class StatCommand implements Command {
 
     public final static String STAT_MESSAGE_FOR_ONE_MAN = "Данный бот обслуживает 1 человека.";
     public final static String STAT_MESSAGE = "Данный бот обслуживает %s человек.";
+    public final static String ACTIVE_STAT_MESSAGE = "Активных: ";
 
     @Autowired
     public StatCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {

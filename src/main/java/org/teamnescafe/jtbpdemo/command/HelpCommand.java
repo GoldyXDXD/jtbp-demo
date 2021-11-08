@@ -21,6 +21,8 @@ public class HelpCommand implements Command {
                     + "%s - для тех, кому не хватает ПОМАЩИ\n",
             START.getCommandName(), STOP.getCommandName(),HOMEWORK_HISTORY.getCommandName(), ACTIVE_HOMEWORK.getCommandName(), TIMETABLE.getCommandName() ,STUDENT_LIST.getCommandName() ,HELP.getCommandName());
 
+    public static final String ID_MESSAGE = "Твой (наш) chat Id: ";
+
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
     }
@@ -28,6 +30,7 @@ public class HelpCommand implements Command {
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), HELP_MESSAGE);
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), ID_MESSAGE + update.getMessage().getChatId().toString());
     }
 
     @Override

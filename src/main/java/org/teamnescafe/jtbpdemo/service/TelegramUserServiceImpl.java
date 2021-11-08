@@ -34,8 +34,10 @@ public class TelegramUserServiceImpl implements TelegramUserService {
     }
 
     @Override
-    public List<TelegramUser> retrieveAllInActiveUsers() {
-        return telegramUserRepository.findAllByActiveFalse();
+    public List<TelegramUser> saveActive(TelegramUser telegramUser) {
+        String chatId = telegramUser.getChatId();
+        telegramUserRepository.delete(telegramUser);
+        telegramUserRepository.save(new TelegramUser(chatId, false));
     }
 
     @Override

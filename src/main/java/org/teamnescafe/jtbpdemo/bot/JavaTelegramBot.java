@@ -33,8 +33,8 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
     private final CommandContainer commandContainer;
     String commandMessage;
 
-    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService, SubjectService subjectService, List<String> admins) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService, subjectService, admins);
+    public JavaTelegramBot(TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService, SubjectService subjectService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, homeworkService, studentService, subjectService);
     }
 
     @SneakyThrows
@@ -43,16 +43,16 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
             Matcher matcher = DATE_PATTERN.matcher(message);
-            String username = update.getMessage().getFrom().getUserName();
+            String chatId = update.getMessage().getChatId().toString();
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 commandMessage = message;
-                commandContainer.retrieveCommand(commandIdentifier, username).execute(update);
+                commandContainer.retrieveCommand(commandIdentifier, chatId).execute(update);
             } else if (matcher.matches() && commandMessage.equals("/timetable")) {
-                commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName(), username).execute(update);
+                commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName(), chatId).execute(update);
             }
             else {
-                commandContainer.retrieveCommand(NO.getCommandName(), username).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName(), chatId).execute(update);
             }
         }
     }

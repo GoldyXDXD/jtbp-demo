@@ -3,9 +3,9 @@ package org.teamnescafe.jtbpdemo.command;
 import com.google.common.collect.ImmutableMap;
 import org.teamnescafe.jtbpdemo.service.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.nonNull;
 import static org.teamnescafe.jtbpdemo.command.CommandName.*;
 
 public class CommandContainer {
@@ -13,8 +13,8 @@ public class CommandContainer {
     private final Command unknownCommand;
     private final List<String> admins;
 
-    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService, SubjectService subjectService, List<String> admins) {
-        this.admins = admins;
+    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService, HomeworkService homeworkService, StudentService studentService, SubjectService subjectService) {
+        admins = List.of("474715304");
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService, telegramUserService))
@@ -32,10 +32,10 @@ public class CommandContainer {
         unknownCommand = new UnknownCommand(sendBotMessageService);
     }
 
-    public Command retrieveCommand(String commandIdentifier, String username) {
+    public Command retrieveCommand(String commandIdentifier, String chatId) {
         Command orDefault = commandMap.getOrDefault(commandIdentifier, unknownCommand);
         if (isAdmin(orDefault)) {
-            if (admins.contains(username)) {
+            if (admins.contains(chatId)) {
                 return orDefault;
             } else {
                 return unknownCommand;
