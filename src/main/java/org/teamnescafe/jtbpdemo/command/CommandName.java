@@ -10,7 +10,10 @@ public enum CommandName {
     HOMEWORK_HISTORY("/homework_history"),
     GROUP_TIMETABLE("/dgjadgjaokjgsdlkgdflkghdhkglkdfshgkdhghksldfkfhglkhdlkghdlkhghoipewrhgopierhgoiperhopiekhneokjoerigoierjgoierhgi"),
     TIMETABLE("/timetable"),
-    STUDENT_LIST("/student_list");
+    STUDENT_LIST("/student_list"),
+    COMPLEMENT_DB("/complement_db"),
+    REAL_COMPLEMENT_DB("/asdgiasdgjasglkajshgiuyrkslejhykreguihsdoiughsdouifhguidfhguifdghuioshsfighisofhbieubhyeyuriiu"),
+    ADMIN_HELP("/admin_help");
 
     private final String commandName;
 

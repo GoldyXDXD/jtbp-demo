@@ -14,7 +14,6 @@ public class StatCommand implements Command {
 
     public final static String STAT_MESSAGE_FOR_ONE_MAN = "Данный бот обслуживает 1 человека.";
     public final static String STAT_MESSAGE = "Данный бот обслуживает %s человек.";
-    public final static String ACTIVE_STAT_MESSAGE = "Активных: ";
 
     @Autowired
     public StatCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
@@ -29,10 +28,12 @@ public class StatCommand implements Command {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STAT_MESSAGE_FOR_ONE_MAN);
         } else {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), String.format(STAT_MESSAGE, activeUserCount));
-            for (TelegramUser user: telegramUserService.retrieveAllUsers()) {
-                sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), user.getChatId());
-            }
         }
+        String users = "Пользователи с активным ботом:\n";
+        for (TelegramUser user: telegramUserService.retrieveAllUsers()) {
+            users += (user.getChatId() + "\n");
+        }
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), users.substring(0, users.length() - 1));
     }
 
     @Override

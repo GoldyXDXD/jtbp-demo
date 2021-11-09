@@ -34,10 +34,13 @@ public class TelegramUserServiceImpl implements TelegramUserService {
     }
 
     @Override
-    public List<TelegramUser> saveActive(TelegramUser telegramUser) {
+    public void changeActive(TelegramUser telegramUser) {
         String chatId = telegramUser.getChatId();
         telegramUserRepository.delete(telegramUser);
-        telegramUserRepository.save(new TelegramUser(chatId, false));
+        TelegramUser TgUser = new TelegramUser();
+        TgUser.setChatId(chatId);
+        TgUser.setActive(false);
+        telegramUserRepository.save(TgUser);
     }
 
     @Override

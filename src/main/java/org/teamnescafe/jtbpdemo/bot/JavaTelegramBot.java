@@ -8,7 +8,6 @@ import org.teamnescafe.jtbpdemo.service.*;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,14 +41,16 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
-            Matcher matcher = DATE_PATTERN.matcher(message);
+            Matcher dateMatcher = DATE_PATTERN.matcher(message);
             String chatId = update.getMessage().getChatId().toString();
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
-                commandMessage = message;
+                commandMessage = message.trim();
                 commandContainer.retrieveCommand(commandIdentifier, chatId).execute(update);
-            } else if (matcher.matches() && commandMessage.equals("/timetable")) {
+            } else if (dateMatcher.matches() && commandMessage.equals("/timetable")) {
                 commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName(), chatId).execute(update);
+            } else if (commandMessage.equals("/complement_db")) {
+                commandContainer.retrieveCommand(REAL_COMPLEMENT_DB.getCommandName(), chatId).execute(update);
             }
             else {
                 commandContainer.retrieveCommand(NO.getCommandName(), chatId).execute(update);

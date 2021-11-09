@@ -24,7 +24,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%d. %s. Дата рождения: %s", id, firstAndLastName, birthday.toString());
+        return String.format("%s. Дата рождения: %s.%s.%s", firstAndLastName, birthday.toString().substring(8, 10), birthday.toString().substring(5, 7), birthday.toString().substring(0, 4));
     }
 }
 

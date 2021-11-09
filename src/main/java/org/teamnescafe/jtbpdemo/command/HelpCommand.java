@@ -16,12 +16,11 @@ public class HelpCommand implements Command {
                     + "%s - уйти прочь (пригодится в дальнейшем для отключения уведомлений)\n"
                     + "%s - посмотреть архив домашних заданий\n"
                     + "%s - посмотреть актуальное домашнее задание\n"
-                    + "%s - посмотреть расписание"
+                    + "%s - посмотреть расписание\n"
+                    + "%s - посмотреть команды админа (доступно только администраторам)\n"
                     + "%s - посмотреть список группы\n\n"
                     + "%s - для тех, кому не хватает ПОМАЩИ\n",
-            START.getCommandName(), STOP.getCommandName(),HOMEWORK_HISTORY.getCommandName(), ACTIVE_HOMEWORK.getCommandName(), TIMETABLE.getCommandName() ,STUDENT_LIST.getCommandName() ,HELP.getCommandName());
-
-    public static final String ID_MESSAGE = "Твой (наш) chat Id: ";
+            START.getCommandName(), STOP.getCommandName(),HOMEWORK_HISTORY.getCommandName(), ACTIVE_HOMEWORK.getCommandName(), TIMETABLE.getCommandName(), ADMIN_HELP.getCommandName(), STUDENT_LIST.getCommandName() ,HELP.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -30,7 +29,6 @@ public class HelpCommand implements Command {
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), HELP_MESSAGE);
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), ID_MESSAGE + update.getMessage().getChatId().toString());
     }
 
     @Override

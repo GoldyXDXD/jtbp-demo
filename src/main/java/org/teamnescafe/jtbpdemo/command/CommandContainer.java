@@ -27,6 +27,9 @@ public class CommandContainer {
                 .put(STUDENT_LIST.getCommandName(), new StudentListCommand(sendBotMessageService, studentService))
                 .put(GROUP_TIMETABLE.getCommandName(), new GroupTimetableCommand(sendBotMessageService, subjectService))
                 .put(TIMETABLE.getCommandName(), new TimetableCommand(sendBotMessageService))
+                .put(COMPLEMENT_DB.getCommandName(), new CDBCMessageCommand(sendBotMessageService))
+                .put(REAL_COMPLEMENT_DB.getCommandName(), new ComplementDBCommand(homeworkService, sendBotMessageService, studentService))
+                .put(ADMIN_HELP.getCommandName(), new AdminHelpCommand(sendBotMessageService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);

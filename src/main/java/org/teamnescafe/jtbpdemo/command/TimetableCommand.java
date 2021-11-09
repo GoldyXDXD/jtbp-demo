@@ -1,5 +1,6 @@
 package org.teamnescafe.jtbpdemo.command;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.teamnescafe.jtbpdemo.service.SendBotMessageService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -8,6 +9,7 @@ public class TimetableCommand implements Command{
 
     private final SendBotMessageService sendBotMessageService;
 
+    @Autowired
     public TimetableCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
     }
