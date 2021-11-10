@@ -8,7 +8,6 @@ import static org.teamnescafe.jtbpdemo.command.CommandName.COMPLEMENT_DB;
 import static org.teamnescafe.jtbpdemo.command.CommandName.STAT;
 
 public class AdminHelpCommand implements Command {
-    private final boolean isAdminCommand = true;
 
     public static final String ADMIN_HELP_MESSAGE = format("✨<b>Доступные команды админа</b>✨\n\n"
                     + "%s - добавление записей в БД\n"

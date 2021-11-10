@@ -6,7 +6,6 @@ import org.teamnescafe.jtbpdemo.entity.Subject;
 import org.teamnescafe.jtbpdemo.repo.SubjectRepository;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
