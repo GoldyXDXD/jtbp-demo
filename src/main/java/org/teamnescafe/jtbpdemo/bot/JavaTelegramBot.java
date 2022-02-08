@@ -51,6 +51,8 @@ public class JavaTelegramBot extends TelegramLongPollingBot {
                 commandContainer.retrieveCommand(GROUP_TIMETABLE.getCommandName(), chatId).execute(update);
             } else if (commandMessage.equals("/complement_db")) {
                 commandContainer.retrieveCommand(REAL_COMPLEMENT_DB.getCommandName(), chatId).execute(update);
+            } else if(commandMessage.equals("/mailing")) {
+                commandContainer.retrieveCommand(MAILING.getCommandName(), chatId).execute(update);
             }
             else {
                 commandContainer.retrieveCommand(NO.getCommandName(), chatId).execute(update);

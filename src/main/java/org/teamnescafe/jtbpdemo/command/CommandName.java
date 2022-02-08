@@ -13,7 +13,9 @@ public enum CommandName {
     STUDENT_LIST("/student_list"),
     COMPLEMENT_DB("/complement_db"),
     REAL_COMPLEMENT_DB("/asdgiasdgjasglkajshgiuyrkslejhykreguihsdoiughsdouifhguidfhguifdghuioshsfighisofhbieubhyeyuriiu"),
-    ADMIN_HELP("/admin_help");
+    ADMIN_HELP("/admin_help"),
+    MAILING_MESSAGE("/mailing"),
+    MAILING("/d4f3jitj32463246j3426324ekgejwogiwji4u2-olasdlasdjeopiwjwpio45jym4ipnhpwhkrwgkhrtnhrthujtrhtrjhitknhisrmlmhr32g34g");
 
     private final String commandName;
 
